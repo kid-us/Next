@@ -1,11 +1,24 @@
 import Link from "next/link";
-import React from "react";
 
-const UserPage = () => {
+interface User {
+  id: number;
+  name: string;
+}
+
+const UserPage = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users: User[] = await res.json();
+
   return (
     <div>
-      <p>User Page</p>
       <Link href="/users/new">New User</Link>
+      <p className="font-black mb-2">Users</p>
+
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };
