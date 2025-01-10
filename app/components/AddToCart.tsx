@@ -2,8 +2,13 @@
 
 const AddToCart = () => {
   return (
-    <div>
-      <button onClick={() => console.log("Clicked")}>Add to cart</button>
+    <div className="mt-5">
+      <button
+        className="btn btn-sm text-xs"
+        onClick={() => console.log("Clicked")}
+      >
+        Add to cart
+      </button>
     </div>
   );
 };
