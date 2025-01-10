@@ -6,7 +6,7 @@ const ProductsPage = async ({
   const slug = (await params).slug;
   return (
     <div>
-      <p>ProductsPage {slug}</p>
+      <p>Products Pages {slug}</p>
     </div>
   );
 };
