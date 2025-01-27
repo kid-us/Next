@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "./Navbar";
 
 interface Props {
   children: React.ReactNode;
@@ -14,7 +15,10 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
       <body>
-        <div className="container mx-auto py-10">{children}</div>
+        <div className="container mx-auto py-10">
+          <Navbar />
+          <main className="mt-10">{children}</main>
+        </div>
       </body>
     </html>
   );

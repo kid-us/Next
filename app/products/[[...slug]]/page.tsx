@@ -3,7 +3,7 @@ interface Props {
   searchParams: { sortBy: string };
 }
 
-const Slug = ({ params: { slug }, searchParams: { sortBy } }: Props) => {
+const SlugExample = ({ params: { slug }, searchParams: { sortBy } }: Props) => {
   return (
     <div>
       <p>Products {slug}</p>
@@ -13,4 +13,4 @@ const Slug = ({ params: { slug }, searchParams: { sortBy } }: Props) => {
   );
 };
 
-export default Slug;
+export default SlugExample;

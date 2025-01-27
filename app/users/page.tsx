@@ -6,7 +6,7 @@ interface Props {
 const UserPage = async ({ searchParams: { sortBy } }: Props) => {
   return (
     <div>
-      <p>Users</p>
+      <h1>Users</h1>
       <UserTable sortBy={sortBy} />
     </div>
   );
