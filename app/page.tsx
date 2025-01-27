@@ -3,7 +3,7 @@ import ProductCard from "./components/ProductCard";
 
 const Home = () => {
   return (
-    <div className="container mx-auto py-10">
+    <div>
       <p>Hello Next-JS</p>
       <Link href={"/users"} className="text-blue-500 underline">
         Users

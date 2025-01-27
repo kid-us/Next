@@ -14,7 +14,7 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
       <body>
-        <div>{children}</div>
+        <div className="container mx-auto py-10">{children}</div>
       </body>
     </html>
   );
