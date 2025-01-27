@@ -3,7 +3,7 @@ import React from "react";
 const UserNotFound = () => {
   return (
     <div>
-      <p>User not found.</p>
+      <p>User&apos;s not found.</p>
     </div>
   );
 };
