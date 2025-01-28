@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import productSchema from "./schema";
+import { prisma } from "@/lib/client";
 
 // Get Products
-export const GET = (request: NextRequest) => {
-  return NextResponse.json([
-    { id: 1, name: "Milk" },
-    { id: 2, name: "Egg" },
-    { id: 3, name: "Yogurt" },
-    { id: 4, name: "Cheese" },
-    { id: 5, name: "Butter" },
-  ]);
+export const GET = async (request: NextRequest) => {
+  const products = await prisma.product.findMany();
+
+  return NextResponse.json(products);
 };
 
 // Post Products
@@ -21,10 +18,24 @@ export const POST = async (request: NextRequest) => {
   if (validation.error)
     return NextResponse.json(validation.error.errors, { status: 400 });
 
-  return NextResponse.json(
-    {
-      message: `Product ${body.name} created successfully`,
+  const product = await prisma.product.findUnique({
+    where: {
+      name: body.name,
     },
-    { status: 201 }
-  );
+  });
+
+  if (product)
+    return NextResponse.json(
+      { error: "Product name already exist" },
+      { status: 400 }
+    );
+
+  const newProduct = await prisma.product.create({
+    data: {
+      name: body.name,
+      price: body.price,
+    },
+  });
+
+  return NextResponse.json(newProduct, { status: 201 });
 };
