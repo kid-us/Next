@@ -30,3 +30,11 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  desc      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
