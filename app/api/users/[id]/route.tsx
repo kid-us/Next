@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import userSchema from "../schema";
 
 // Get single user
 export const GET = (
@@ -26,13 +27,10 @@ export const PUT = async (
 ) => {
   const body = await request.json();
 
-  if (!body.name)
-    return NextResponse.json(
-      {
-        error: "Name is required",
-      },
-      { status: 400 }
-    );
+  const validation = userSchema.safeParse(body);
+
+  if (validation.error)
+    return NextResponse.json(validation.error.errors, { status: 400 });
 
   if (id > 10)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
@@ -41,7 +39,6 @@ export const PUT = async (
 };
 
 // Delete
-
 export const DELETE = (
   request: NextRequest,
   { params: { id } }: { params: { id: number } }
