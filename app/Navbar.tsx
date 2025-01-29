@@ -7,8 +7,6 @@ import React from "react";
 const Navbar = () => {
   const { status, data: session } = useSession();
 
-  // if (status === "authenticated") return null;
-
   return (
     <nav className="flex justify-between">
       <div className="space-x-10">
@@ -19,12 +17,21 @@ const Navbar = () => {
         <Link href={"/upload"}>Upload</Link>
       </div>
 
-
-{status === "loading" && <div><p>Loading ...</p></div>}
+      {status === "loading" && (
+        <div>
+          <p>Loading ...</p>
+        </div>
+      )}
 
       {status === "authenticated" && (
-        <div>
+        <div className="flex gap-x-5">
           <p>{session.user!.name}</p>
+          <Link
+            href={"/api/auth/signout"}
+            className="text-red-500 font-bold font-mono"
+          >
+            Logout
+          </Link>
         </div>
       )}
 
